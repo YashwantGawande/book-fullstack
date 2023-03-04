@@ -6,7 +6,7 @@ import Books from "./pages/Books";
 
 const Layout = () => {
   return (
-    <div className="app">
+    <div className="App">
       <Outlet />
     </div>
   );
@@ -22,7 +22,7 @@ const router = createBrowserRouter([
         path: "/",
         element: <Books />,
       },
-      { path: "/update", element: <Update /> },
+      { path: "/update/:id", element: <Update /> },
     ],
   },
 ]);
