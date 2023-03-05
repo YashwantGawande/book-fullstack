@@ -53,17 +53,17 @@ app.delete("/books/:id", (req, res) => {
 app.put("/books/:id", (req, res) => {
   const bookId = req.params.id;
   const q =
-    "UPDATE books SET `title`= ?,`desc`= ?,`price`= ?,`cover`= ? WHERE id = ?";
+    "UPDATE books SET `title` = ?, `desc` = ?, `price` = ?, `cover` = ? WHERE id = ?";
 
   const values = [
     req.body.title,
     req.body.desc,
-    req.body.cover,
     req.body.price,
+    req.body.cover,
   ];
   db.query(q, [...values, bookId], (err, data) => {
     if (err) return res.send(err);
-    return res.json("book has been ");
+    return res.json(data);
   });
 });
 

@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 
 const Update = () => {
+  const [error, setError] = useState(false);
   const [book, setBook] = useState({
     title: "",
     desc: "",
@@ -25,11 +26,11 @@ const Update = () => {
       await axios.put(`http://localhost:8800/books/${bookId}`, book);
       navigate("/");
     } catch (err) {
+      setError(true)
       console.log(err);
     }
   };
 
-  console.log(book);
   return (
     <div className="form">
       <h1>Update the Book</h1>
@@ -60,6 +61,8 @@ const Update = () => {
       <button className="formButton" onClick={handleClick}>
         Update
       </button>
+      {error && <h1>Something went wrong!</h1>}
+      <Link to="/">See all books</Link>
     </div>
   );
 };
